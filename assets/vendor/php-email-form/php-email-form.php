@@ -45,7 +45,7 @@ class PHP_Email_Form {
   private $attachments = [];
 
   public function __construct() {
-    $this->mailer = "autoai@" . @preg_replace('/^www\./','', $_SERVER['SERVER_NAME']);
+    $this->mailer = "autoaipandemics@" . @preg_replace('/^www\./','', $_SERVER['SERVER_NAME']);
   }
 
   public function add_message($content, $label = '', $length_check = false) {
