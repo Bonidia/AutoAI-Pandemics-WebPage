@@ -1,0 +1,3 @@
+[submodule "summer-school-automl"]
+	path = summer-school-automl
+	url = https://github.com/Bonidia/summer-school-automl.git
