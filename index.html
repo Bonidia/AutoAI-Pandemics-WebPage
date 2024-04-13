@@ -507,7 +507,7 @@
             <div class="col-xl-4 col-md-4 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <a href="figures/news/49.mp4" data-gallery="portfolio-gallery-app" class="glightbox" data-type="video">
-                <img src="figures/news/15.jpg" class="img-fluid" alt="" style="width: 500px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
+                <img src="figures/news/53.jpg" class="img-fluid" alt="" style="width: 300px; height: 300px; display: block; margin-left: auto; margin-right: auto;">
                 </a>
                 <div class="portfolio-info">
                   <h4><a href="portfolio-details.html" title="More Details">Águeda: Artificial Intelligence for Early Detection of Breast Cancer</a></h4>
@@ -1153,6 +1153,10 @@
         <div class="section-header">
           <h2>Recent News Posts</h2>
           <p></p>
+          <form id="search-form" class="input-group mb-3">
+            <input type="text" id="search-input" class="form-control" placeholder="Search news..." aria-label="Search news" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+          </form>
         </div>
 
         <div class="row gy-4">
@@ -2708,6 +2712,29 @@
     });
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('search-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var searchTerm = document.getElementById('search-input').value.toLowerCase();
+        var allArticles = document.querySelectorAll('#recent-posts .row .col-xl-4.col-md-6');
+
+        if (!searchTerm.trim()) {
+          allArticles.forEach(article => article.style.display = '');
+          return;
+        }
+
+        allArticles.forEach(function(col) {
+          var titleText = col.querySelector('article .title a').textContent.toLowerCase();
+          if (titleText.includes(searchTerm)) {
+            col.style.display = '';
+          } else {
+            col.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
